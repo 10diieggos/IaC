@@ -16,6 +16,7 @@ provider "aws" {
 resource "aws_instance" "app_server" {
   ami           = "ami-017fecd1353bcc96e"
   instance_type = "t2.micro"
+  key_name = "aws_instances_ssh_key_10diieggos"
 
   tags = {
     Name = "MinhaPrimeiraInstanciaEC2ComTerraform"
