@@ -17,8 +17,14 @@ resource "aws_instance" "app_server" {
   ami           = "ami-017fecd1353bcc96e"
   instance_type = "t2.micro"
   key_name = "aws_instances_ssh_key_10diieggos"
+  user_data = <<-EOF
+                  #!/bin/bash
+                  cd /home/ubuntu
+                  echo "<h1>feito com terraform</h1>" > index.html
+                  nohup busybox httpd -f -p 8080 &
+                 EOF
 
   tags = {
-    Name = "MinhaPrimeiraInstanciaEC2ComTerraform"
+    Name = "InstanciaComServidorWebAutomatizado"
   }
 }
