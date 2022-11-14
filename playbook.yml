@@ -1,4 +1,4 @@
-- hosts: terraform-ansible
+- hosts: terraformansible
   tasks:
   - name: criando o arquivo
     copy:
