@@ -1,26 +1,33 @@
 # IaC - Infraestrututa como Código
  
 ## Sobre
-Este repósitorio foi produzido durante meus estudos no curso prático de iniciação ao conceito de Infraestrututa como código da Alura
+Este repósitorio foi produzido durante meus estudos no curso prático de iniciação ao conceito de Infraestrututa como código da Alura.
+
 Curso: [Infraestrutura como código: preparando máquinas na AWS com Ansible e Terraform](https://cursos.alura.com.br/course/infraestrutura-codigo-maquinas-aws-ansible-terraform/task/96416)
+
 Instrutores: [Leonardo Sartorello](https://www.linkedin.com/in/leonardomsartorello/), [Guilherme Lima](https://www.linkedin.com/in/guilherme-lima-458925178/)
+
 Plataforma: [Alura](https://www.alura.com.br/)
 
 ## Aprendizado
 
-No curso aprendi as vantagens da IaC e pratiquei a montagem de uma infraestrutura na AWS utilizando EC2, Terraform e Ansible.
+No curso, aprendi as vantagens da IaC e pratiquei a montagem de uma infraestrutura na AWS utilizando EC2, Terraform e Ansible.
 
 Pontos altos da prática/aprendizado:
-  - criação de uma instância EC2 através do Terraform com conexão SSH;
-  - execução de comandos linux dentro da instância EC2 durante sua criação com o Terraform;
-  - execução de comandos linux dentro da instância EC2 após sua criação com o Ansible;
-  - instalação de dependências e bibliotecas para um projeto python/Django com o Ansible. Os conceitos podem ser utilizados para instalar dependências de outras tecnologias;
-  - Modificação de arquivos de configuração na EC2 utilizando Ansible;
-## Replique o resultado do projeto neste repositório
+  - criação automatizada de uma instância EC2 através do Terraform com conexão SSH;
+  - execução automatizada de comandos linux dentro da instância EC2 durante sua criação com o Terraform;
+  - execução automatizada de comandos linux dentro da instância EC2 após sua criação com o Ansible;
+  - instalação automatizada de dependências e bibliotecas para um projeto python/Django com o Ansible. Os conceitos podem ser utilizados para instalar dependências de outras tecnologias;
+  - Modificação automatizada de arquivos de configuração na EC2 utilizando Ansible;
+## Replique o resultado do projeto deste repositório
 
 Ao final você deve ter um projeto Django em nuvem pronto para iniciar o desenvolvimento.
 
-***Cuidado! Lembre-se de ao final encerrar a sua instância EC2 para evitar cobranças inesperadas. Para isso siga o último passo***
+Pré-requisitos:
+- familiaridade com o AWS Console na Web, em especial com o serviço EC2
+- familiaridade com a linha de comando e com conexões SSH
+
+***Cuidado! Lembre-se de ao final encerrar a sua instância EC2 para evitar cobranças inesperadas. Para isso siga o passo "Encerrando a Instância EC2"***
 
 Nota1: Os comandos de instalação e configuração do ambiente de desenvolvimento a seguir, são, a princípio, para o Ubuntu 22.04
 
@@ -63,24 +70,29 @@ aws configure
 
 Caso ainda não possua, [crie um par de chaves]() SSH no console da AWS e baixe a chave privada para a pasta do repositório IaC clonado.
 
+Configure as permissões da chave com o comando abaixo:
+```bash
+chmod 400 nome_do_arquivo_da_sua_chave_SSH_privada.pem
+```
+
 No arquivo main.tf substitua o nome da minha chave privada pelo nome da sua chave privada, sem a extensão .pem
 
 ```
 resource "aws_instance" "app_server" {
   ...
 
-  key_name = "nome_da_sua_chave_privada_sem_a_extensao"
+  key_name = "nome_do_arquivo_da_sua_chave_SSH_privada_sem_a_extensao"
 
   ...
 }
 ```
-## Crie a instância EC2 com Terraform
+### Crie a instância EC2 com Terraform
 Na pasta do repositorio clonado rode o comando:
 
 ```bash
 terraform init
 ```
-Aguarde o fim da execução e rode o prósimo comando:
+Aguarde o fim da execução e rode o próximo comando:
 ```bash
 terraform apply
 ```
