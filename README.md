@@ -117,7 +117,7 @@ No arquivo hosts.yml, no repositório clonado, cole o endereço ip externo da su
 [terraformansible]
 cole.aqui.seu.ip.substuindo.o.que.estiver.no.lugar
 ```
-Na pasta do repositorio clonado rode o comando abaixo, substuindo o treco sua_chave_SSH_privada pelo nome do arquivo da sua chave:
+Na pasta do repositorio clonado rode o comando abaixo, substuindo o trecho sua_chave_SSH_privada pelo nome do arquivo da sua chave:
 ```bash
 ansible-playbook playbook.yml -u ubuntu --private-key SUA_CHAVE_SSH_PRIVADA.pem -i hosts.yml
 ```
